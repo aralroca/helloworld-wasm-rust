@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Rust + Webassembly</title>
+  <script type="module">
+    import init, { fibonacci, example, helloworld } from "./pkg/helloworld.js"
+
+    function fibonacciInJs(n) {
+      if (n <= 1) return n
+      return fibonacciInJs(n - 1) + fibonacciInJs(n - 2)
+    }
+
+    async function run() {
+      await init()
+      example()
+      const num = 20
+
+      console.time('Fibonnaci in rust')
+      const fibRust = fibonacci(num)
+      console.timeEnd('Fibonnaci in rust')
+
+      console.time('Fibonnaci in JS')
+      const fibJS = fibonacciInJs(num)
+      console.timeEnd('Fibonnaci in JS')
+
+      document.body.textContent = `${helloworld()} - Fibonnaci of ${num}:  Rust = ${fibRust} and JS = ${fibJS}`
+    };
+
+    run()
+  </script>
+</head>
+
+<body></body>
+
+</html>
