@@ -2,6 +2,10 @@
 
 Hello world code with WebAssembly and Rust.
 
+This code is from this article: 
+
+- https://aralroca.com/blog/first-steps-webassembly-rust
+
 Compile with:
 
 ```
